@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宮崎能力開発研究所｜子どもの発達トレーニング 京都</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2D6A4F;
+    --green-mid: #52B788;
+    --green-light: #D8F3DC;
+    --green-pale: #F0FAF3;
+    --amber: #E07B39;
+    --amber-light: #FFF0E6;
+    --text: #1A2E1F;
+    --text-mid: #4A5568;
+    --text-soft: #718096;
+    --white: #FDFCF8;
+    --border: rgba(45,106,79,0.12);
+    --serif: 'Noto Serif JP', serif;
+    --sans: 'Noto Sans JP', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(253,252,248,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 14px; font-weight: 700;
+    color: var(--green); line-height: 1.3;
+  }
+  .nav-logo span { font-size: 11px; font-weight: 400; color: var(--text-soft); display: block; }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-mid); text-decoration: none; letter-spacing: 0.03em; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--amber); color: #fff;
+    font-size: 13px; font-weight: 500;
+    padding: 9px 22px; border-radius: 24px;
+    border: none; cursor: pointer; text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #c96a28; }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    background: var(--green-pale);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(82,183,136,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(224,123,57,0.08) 0%, transparent 60%);
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); border: 1px solid var(--border);
+    font-size: 12px; color: var(--green);
+    padding: 6px 16px; border-radius: 20px;
+    margin-bottom: 36px; letter-spacing: 0.06em;
+    font-weight: 500;
+    position: relative;
+  }
+  .hero-badge::before { content: '🌱'; font-size: 14px; }
+  .hero-subtitle {
+    font-size: 13px; font-weight: 400;
+    color: var(--text-soft); letter-spacing: 0.1em;
+    margin-bottom: 20px; position: relative;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700; line-height: 1.4;
+    color: var(--green);
+    margin-bottom: 28px;
+    position: relative;
+  }
+  .hero-quote {
+    font-family: var(--serif);
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--amber); font-weight: 500;
+    letter-spacing: 0.06em;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .hero-desc {
+    font-size: 15px; color: var(--text-mid);
+    max-width: 480px; line-height: 1.9;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .hero-belief {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--green);
+    color: #fff; font-size: 14px; font-weight: 500;
+    padding: 14px 32px; border-radius: 32px;
+    position: relative; letter-spacing: 0.04em;
+  }
+  .hero-belief::after { content: ' →'; }
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text-soft); font-size: 11px; letter-spacing: 0.08em;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--green-mid), transparent);
+    animation: scrollAnim 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollAnim { 0%,100%{opacity:0.3;transform:scaleY(0.6)} 50%{opacity:1;transform:scaleY(1)} }
+
+  /* ============ SECTION BASE ============ */
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 840px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.14em;
+    color: var(--green-mid); font-weight: 500;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700; line-height: 1.5;
+    color: var(--text); margin-bottom: 40px;
+  }
+  .section-title em { color: var(--green); font-style: normal; }
+
+  /* ============ WORRIES ============ */
+  .worries-bg { background: var(--white); }
+  .worries-list {
+    display: flex; flex-direction: column; gap: 2px;
+    margin-bottom: 36px;
+  }
+  .worry-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 24px;
+    border-left: 3px solid var(--green-light);
+    background: var(--green-pale);
+    border-radius: 0 10px 10px 0;
+    font-size: 15px; color: var(--text-mid);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .worry-item:hover { border-color: var(--green-mid); background: var(--green-light); }
+  .worry-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); margin-top: 9px; flex-shrink: 0; }
+  .worries-cta {
+    background: var(--amber-light);
+    border: 1px solid rgba(224,123,57,0.2);
+    border-radius: 14px;
+    padding: 24px 28px;
+    font-size: 15px; color: var(--amber);
+    font-weight: 500; text-align: center;
+  }
+
+  /* ============ PHILOSOPHY ============ */
+  .philosophy-bg { background: var(--green); color: #fff; }
+  .philosophy-bg .section-label { color: rgba(255,255,255,0.6); }
+  .philosophy-bg .section-title { color: #fff; }
+  .philosophy-card {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 40px 48px;
+    text-align: center;
+  }
+  .philosophy-main {
+    font-family: var(--serif);
+    font-size: 22px; font-weight: 700;
+    color: #fff; margin-bottom: 20px; line-height: 1.6;
+  }
+  .philosophy-sub { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.9; }
+  .philosophy-accent { color: #A8E6CF; font-weight: 500; }
+
+  /* ============ FEATURES ============ */
+  .features-bg { background: var(--white); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .feature-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    background: var(--white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .feature-card:hover { border-color: var(--green-mid); box-shadow: 0 4px 20px rgba(45,106,79,0.08); }
+  .feature-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 18px;
+  }
+  .feature-num {
+    font-size: 11px; letter-spacing: 0.12em;
+    color: var(--green-mid); font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .feature-title { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+  .feature-text { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
+  .feature-point {
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--green);
+    font-weight: 500;
+  }
+  .feature-bullets { list-style: none; margin-top: 10px; }
+  .feature-bullets li { font-size: 13px; color: var(--text-mid); padding: 3px 0; padding-left: 14px; position: relative; }
+  .feature-bullets li::before { content: '・'; position: absolute; left: 0; color: var(--green-mid); }
+
+  /* ============ VISION TRAINING ============ */
+  .vision-bg { background: var(--green-pale); }
+  .vision-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 48px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: center;
+    border: 1px solid var(--border);
+  }
+  .vision-label-big {
+    display: inline-block;
+    background: var(--green);
+    color: #fff; font-size: 12px;
+    padding: 4px 14px; border-radius: 12px;
+    margin-bottom: 16px; letter-spacing: 0.06em;
+  }
+  .vision-title { font-family: var(--serif); font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+  .vision-text { font-size: 14px; color: var(--text-mid); line-height: 1.9; margin-bottom: 20px; }
+  .vision-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .vision-pill {
+    background: var(--green-light); color: var(--green);
+    font-size: 13px; font-weight: 500;
+    padding: 8px 20px; border-radius: 20px;
+  }
+  .vision-eye {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .eye-graphic {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .eye-graphic::before {
+    content: '👁';
+    font-size: 64px;
+  }
+
+  /* ============ INFO ============ */
+  .info-bg { background: var(--white); }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .info-card {
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+  }
+  .info-card-title {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--serif); font-size: 17px; font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .info-icon { font-size: 20px; }
+  .info-row { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .info-row:last-child { border-bottom: none; }
+  .info-key { font-size: 12px; color: var(--text-soft); min-width: 80px; padding-top: 2px; }
+  .info-val { font-size: 14px; color: var(--text); }
+  .info-val strong { color: var(--green); font-weight: 500; }
+  .condition-card {
+    border: 2px solid var(--green-light);
+    border-radius: 16px; padding: 32px;
+    background: var(--green-pale);
+  }
+  .condition-card .info-card-title { color: var(--green); }
+  .condition-bullets { list-style: none; margin-top: 4px; }
+  .condition-bullets li {
+    font-size: 14px; color: var(--text-mid);
+    padding: 8px 0 8px 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(82,183,136,0.15);
+  }
+  .condition-bullets li:last-child { border-bottom: none; }
+  .condition-bullets li::before { content: '✓'; position: absolute; left: 0; color: var(--green-mid); font-weight: 700; }
+
+  /* ============ VOICES ============ */
+  .voices-bg { background: var(--green-pale); }
+  .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .voice-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+    position: relative;
+  }
+  .voice-quote-mark {
+    font-family: var(--serif);
+    font-size: 48px; color: var(--green-light);
+    line-height: 1; margin-bottom: 8px;
+  }
+  .voice-headline {
+    font-family: var(--serif);
+    font-size: 14px; font-weight: 700;
+    color: var(--green); margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .voice-text { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+  .voice-tag {
+    display: inline-block;
+    background: var(--green-pale); color: var(--green);
+    font-size: 11px; padding: 3px 10px; border-radius: 10px;
+    margin-top: 14px;
+  }
+
+  /* ============ CHANGES ============ */
+  .changes-bg { background: var(--white); }
+  .change-list { display: flex; flex-direction: column; gap: 16px; }
+  .change-item {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 22px 28px;
+    background: var(--green-pale);
+    border-radius: 14px;
+    border-left: 4px solid var(--green-mid);
+  }
+  .change-arrow { font-size: 18px; color: var(--green); margin-top: 2px; flex-shrink: 0; }
+  .change-text { font-size: 15px; color: var(--text-mid); }
+  .change-text strong { color: var(--text); }
+
+  /* ============ TRIAL ============ */
+  .trial-bg { background: var(--amber); }
+  .trial-inner { max-width: 640px; margin: 0 auto; text-align: center; color: #fff; }
+  .trial-inner .section-label { color: rgba(255,255,255,0.7); }
+  .trial-inner .section-title { color: #fff; margin-bottom: 16px; }
+  .trial-price {
+    font-family: var(--serif);
+    font-size: 48px; font-weight: 700;
+    margin: 24px 0 8px;
+  }
+  .trial-price span { font-size: 20px; font-weight: 400; }
+  .trial-note { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
+  .trial-btn {
+    display: inline-block;
+    background: #fff; color: var(--amber);
+    font-size: 16px; font-weight: 700;
+    padding: 18px 48px; border-radius: 40px;
+    cursor: pointer; border: none;
+    letter-spacing: 0.06em;
+    transition: transform 0.15s;
+  }
+  .trial-btn:hover { transform: scale(1.03); }
+
+  /* ============ CLOSING ============ */
+  .closing-bg { background: var(--green); text-align: center; }
+  .closing-inner { max-width: 600px; margin: 0 auto; }
+  .closing-text {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 700; color: #fff;
+    line-height: 1.8; margin-bottom: 28px;
+  }
+  .closing-text em { color: #A8E6CF; font-style: normal; }
+  .closing-sub { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.9; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--text);
+    padding: 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 14px; font-weight: 700; color: #fff; }
+  .footer-logo span { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.5); display: block; }
+  .footer-info { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+  /* ============ FADE IN ============ */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .vision-card { grid-template-columns: 1fr; }
+    .voices-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .hero { padding: 100px 24px 70px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    宮崎能力開発研究所
+    <span>北大路校 ｜ 西大路御池校（京都市）</span>
+  </div>
+  <div class="nav-links">
+    <a href="#worries">お悩み</a>
+    <a href="#features">特徴</a>
+    <a href="#vision">ビジョントレーニング</a>
+    <a href="#voices">保護者の声</a>
+    <a href="#trial">体験案内</a>
+  </div>
+  <a href="#trial" class="nav-cta">無料体験に申し込む</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">子どもの発達トレーニング教室</div>
+  <div class="hero-subtitle">宮崎能力開発研究所</div>
+  <h1>「一つできれば、<br>十できる。」</h1>
+  <div class="hero-quote">どんな子にも、可能性があります。</div>
+  <p class="hero-desc">
+    私たちは、その子の中にある「できた」を見つけ、育てる教室です。<br>
+    30年の経験の中で、確信していることがあります。
+  </p>
+  <div class="hero-belief">小さな成功体験が、人生を変える</div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- WORRIES -->
+<section class="worries-bg" id="worries">
+  <div class="section-inner fade-in">
+    <div class="section-label">For Parents</div>
+    <div class="section-title">こんなお悩み、<em>ありませんか？</em></div>
+    <div class="worries-list">
+      <div class="worry-item"><div class="worry-dot"></div>このままで大丈夫なのか不安</div>
+      <div class="worry-item"><div class="worry-dot"></div>落ち着きがない、集中できない</div>
+      <div class="worry-item"><div class="worry-dot"></div>自信がない様子が気になる</div>
+      <div class="worry-item"><div class="worry-dot"></div>どう関わればいいか分からない</div>
+      <div class="worry-item"><div class="worry-dot"></div>つい叱ってしまい、後で自己嫌悪になる</div>
+    </div>
+    <div class="worries-cta">そんな保護者の方にこそ来ていただきたい教室です</div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy-bg">
+  <div class="section-inner fade-in" style="text-align:center;">
+    <div class="section-label">Our Philosophy</div>
+    <div class="section-title" style="color:#fff;">教室の<em style="color:#A8E6CF;">理念</em></div>
+    <div class="philosophy-card">
+      <div class="philosophy-main">「親子で成長できる場所」</div>
+      <div class="philosophy-sub">
+        私たちは、子どもだけを変える場所ではありません。<br>
+        保護者の方が<span class="philosophy-accent">「この子のままでいい」</span>と思えるようになること。<br><br>
+        それが、子どもの成長の土台になると考えています。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-bg" id="features">
+  <div class="section-inner fade-in">
+    <div class="section-label">Our Features</div>
+    <div class="section-title">教室の<em>4つの特徴</em></div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌟</div>
+        <div class="feature-num">Feature 01</div>
+        <div class="feature-title">30年の実績</div>
+        <div class="feature-text">30年間、さまざまなお子さんと関わってきました。どんなタイプのお子さんにも対応できる経験があります。</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔍</div>
+        <div class="feature-num">Feature 02</div>
+        <div class="feature-title">必ず良いところを見つける</div>
+        <div class="feature-text">どんな子でも、最低3つは良いところを見つけます。できないことではなく、できていることに目を向ける。それが自信につながります。</div>
+        <div class="feature-point">→ できていることに目を向ける</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-num">Feature 03</div>
+        <div class="feature-title">マンツーマン指導</div>
+        <div class="feature-text">一人ひとりに合わせた個別対応で、無理なく着実に成長を積み重ねます。</div>
+        <ul class="feature-bullets">
+          <li>その子のペースで進める</li>
+          <li>無理をさせない</li>
+          <li>成功体験を積み重ねる</li>
+        </ul>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <div class="feature-num">Feature 04</div>
+        <div class="feature-title">LINEでのフォロー</div>
+        <div class="feature-text">教室の時間だけで終わりません。日常での関わり方もサポートします。</div>
+        <ul class="feature-bullets">
+          <li>日常での関わり方アドバイス</li>
+          <li>不安のサポート</li>
+          <li>変化の共有</li>
+        </ul>
+        <div class="feature-point">→ 一人で悩ませません</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION TRAINING -->
+<section class="vision-bg" id="vision">
+  <div class="section-inner fade-in">
+    <div class="section-label">Vision Training</div>
+    <div class="section-title"><em>ビジョントレーニング</em>（目の学校）</div>
+    <div class="vision-card">
+      <div>
+        <div class="vision-label-big">目の学校メソッド</div>
+        <div class="vision-title">見る力から<br>学びの土台を育てる</div>
+        <div class="vision-text">
+          当教室は「目の学校」メソッドを取り入れたビジョントレーニングを行っています。学習や日常生活を支える力の土台を、楽しみながら育てます。
+        </div>
+        <div class="vision-pills">
+          <div class="vision-pill">見る力</div>
+          <div class="vision-pill">集中力</div>
+          <div class="vision-pill">理解力</div>
+        </div>
+      </div>
+      <div class="vision-eye">
+        <div class="eye-graphic"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices-bg" id="voices">
+  <div class="section-inner fade-in">
+    <div class="section-label">Testimonials</div>
+    <div class="section-title">保護者の<em>声</em></div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-quote-mark">"</div>
+        <div class="voice-headline">子どもが原因だと思っていたのは、私の見方でした</div>
+        <div class="voice-text">最初は、うちの子に問題があると思っていました。でも実は、私自身の"子どもの見方"が間違っていたと気づきました。気づけば、私自身も怒ることが減っていました。</div>
+        <div class="voice-tag">保護者の変化</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote-mark">"</div>
+        <div class="voice-headline">体験後、子どもの変化に本当に驚きました</div>
+        <div class="voice-text">学校に行けなかった子が「行く」と言い出したり、修学旅行を「楽しかった」と話してくれたり。友達ができるようになったあの変化は、正直感動でした。</div>
+        <div class="voice-tag">行動の変化</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote-mark">"</div>
+        <div class="voice-headline">自分から一歩踏み出せるようになりました</div>
+        <div class="voice-text">今までは知らない環境に入ることができなかったのに、自分から飛び込めるように。人の目を気にしすぎることも減り、自分らしく過ごせています。</div>
+        <div class="voice-tag">自己肯定感</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote-mark">"</div>
+        <div class="voice-headline">子どもが変わると、周りとの関係も変わりました</div>
+        <div class="voice-text">気づけば周りから好かれるようになり、リーダーシップを取る姿も。困っているお友達に声をかける姿に、親として本当に嬉しくなりました。</div>
+        <div class="voice-tag">人間関係</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote-mark">"</div>
+        <div class="voice-headline">できなかったことに自信がついてきました</div>
+        <div class="voice-text">苦手だった運動にも自信を持てるようになり、挑戦する姿が増えました。言葉遣いも変わり、乱暴な言葉を使わなくなったのも大きな変化です。</div>
+        <div class="voice-tag">自信・挑戦</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-quote-mark">"</div>
+        <div class="voice-headline">子どもの世界が広がりました</div>
+        <div class="voice-text">自然に興味を持つようになったり、今までとは違うことに関心を持つようになりました。一人ひとりの成長のペースを大切にできるようになりました。</div>
+        <div class="voice-tag">成長・探究</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANGES -->
+<section class="changes-bg">
+  <div class="section-inner fade-in">
+    <div class="section-label">Before → After</div>
+    <div class="section-title">これまでの<em>変化の例</em></div>
+    <div class="change-list">
+      <div class="change-item">
+        <div class="change-arrow">→</div>
+        <div class="change-text"><strong>集中できなかった子</strong>が、落ち着いて取り組めるように</div>
+      </div>
+      <div class="change-item">
+        <div class="change-arrow">→</div>
+        <div class="change-text"><strong>自信がなかった子</strong>が、自分から挑戦するように</div>
+      </div>
+      <div class="change-item">
+        <div class="change-arrow">→</div>
+        <div class="change-text"><strong>親子の関係が良くなり</strong>、笑顔が増える</div>
+      </div>
+    </div>
+    <div style="margin-top:28px; padding:20px 24px; background:var(--green-pale); border-radius:12px; font-size:14px; color:var(--green); font-weight:500; text-align:center;">
+      「うちの子に似ている」がきっと見つかります
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info-bg">
+  <div class="section-inner fade-in">
+    <div class="section-label">Access & Conditions</div>
+    <div class="section-title">教室情報・<em>入室条件</em></div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title"><span class="info-icon">📍</span>教室情報</div>
+        <div class="info-row"><div class="info-key">対象年齢</div><div class="info-val"><strong>5歳〜小学6年生</strong></div></div>
+        <div class="info-row"><div class="info-key">所在地</div><div class="info-val">京都市</div></div>
+        <div class="info-row"><div class="info-key">北大路校</div><div class="info-val">地下鉄 北大路駅</div></div>
+        <div class="info-row"><div class="info-key">西大路御池校</div><div class="info-val">地下鉄 西大路御池駅</div></div>
+        <div class="info-row"><div class="info-key">フォロー</div><div class="info-val">LINEでの個別サポートあり</div></div>
+      </div>
+      <div class="condition-card">
+        <div class="info-card-title" style="color:var(--green);"><span class="info-icon">🌱</span>入室条件（大切にしていること）</div>
+        <p style="font-size:13px;color:var(--text-mid);margin-bottom:16px;">当教室では「建設的な考え方を持つこと」を大切にしています。</p>
+        <ul class="condition-bullets">
+          <li>子どもの可能性を信じる</li>
+          <li>前向きに関わる</li>
+          <li>一緒に成長していく姿勢</li>
+        </ul>
+        <p style="font-size:13px;color:var(--green);margin-top:16px;font-weight:500;">この考え方に共感し、実践していただける方を対象としています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAL -->
+<section class="trial-bg" id="trial">
+  <div class="trial-inner fade-in">
+    <div class="section-label">First Step</div>
+    <div class="section-title">まずは体験から</div>
+    <div class="trial-price"><span>体験レッスン</span> ¥3,000</div>
+    <div class="trial-note">※ご入会の場合、翌月の月謝に充当いたします</div>
+    <button class="trial-btn">体験レッスンに申し込む</button>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing-bg">
+  <div class="closing-inner fade-in">
+    <div class="closing-text">
+      子どもは変わります。<br>
+      でもそれは、無理に変えるのではなく、<br>
+      <em>気づいてあげることから始まります。</em>
+    </div>
+    <div class="closing-sub">私たちは、その一歩を一緒に歩みます。</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    宮崎能力開発研究所
+    <span>北大路校 ｜ 西大路御池校（京都市）</span>
+  </div>
+  <div class="footer-info">
+    対象：5歳〜小学6年生<br>
+    体験レッスン：¥3,000
+  </div>
+  <div class="footer-copy">© 2025 宮崎能力開発研究所</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
