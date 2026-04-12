@@ -6,409 +6,7 @@
 <title>宮崎能力開発研究所｜子どもの発達トレーニング 京都</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --green: #2D6A4F;
-    --green-mid: #52B788;
-    --green-light: #D8F3DC;
-    --green-pale: #F0FAF3;
-    --amber: #E07B39;
-    --amber-light: #FFF0E6;
-    --text: #1A2E1F;
-    --text-mid: #4A5568;
-    --text-soft: #718096;
-    --white: #FDFCF8;
-    --border: rgba(45,106,79,0.12);
-    --serif: 'Noto Serif JP', serif;
-    --sans: 'Noto Sans JP', sans-serif;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--sans);
-    background: var(--white);
-    color: var(--text);
-    line-height: 1.8;
-    overflow-x: hidden;
-  }
-
-  /* ============ NAV ============ */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(253,252,248,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 14px; font-weight: 700;
-    color: var(--green); line-height: 1.3;
-  }
-  .nav-logo span { font-size: 11px; font-weight: 400; color: var(--text-soft); display: block; }
-  .nav-links { display: flex; gap: 28px; align-items: center; }
-  .nav-links a { font-size: 13px; color: var(--text-mid); text-decoration: none; letter-spacing: 0.03em; }
-  .nav-links a:hover { color: var(--green); }
-  .nav-cta {
-    background: var(--amber); color: #fff;
-    font-size: 13px; font-weight: 500;
-    padding: 9px 22px; border-radius: 24px;
-    border: none; cursor: pointer; text-decoration: none;
-    letter-spacing: 0.04em;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: #c96a28; }
-
-  /* ============ HERO ============ */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center;
-    padding: 120px 40px 80px;
-    position: relative;
-    background: var(--green-pale);
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 20% 80%, rgba(82,183,136,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 40% at 80% 20%, rgba(224,123,57,0.08) 0%, transparent 60%);
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--white); border: 1px solid var(--border);
-    font-size: 12px; color: var(--green);
-    padding: 6px 16px; border-radius: 20px;
-    margin-bottom: 36px; letter-spacing: 0.06em;
-    font-weight: 500;
-    position: relative;
-  }
-  .hero-badge::before { content: '🌱'; font-size: 14px; }
-  .hero-subtitle {
-    font-size: 13px; font-weight: 400;
-    color: var(--text-soft); letter-spacing: 0.1em;
-    margin-bottom: 20px; position: relative;
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(32px, 5vw, 52px);
-    font-weight: 700; line-height: 1.4;
-    color: var(--green);
-    margin-bottom: 28px;
-    position: relative;
-  }
-  .hero-quote {
-    font-family: var(--serif);
-    font-size: clamp(14px, 2vw, 18px);
-    color: var(--amber); font-weight: 500;
-    letter-spacing: 0.06em;
-    margin-bottom: 32px;
-    position: relative;
-  }
-  .hero-desc {
-    font-size: 15px; color: var(--text-mid);
-    max-width: 480px; line-height: 1.9;
-    margin-bottom: 48px;
-    position: relative;
-  }
-  .hero-belief {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: var(--green);
-    color: #fff; font-size: 14px; font-weight: 500;
-    padding: 14px 32px; border-radius: 32px;
-    position: relative; letter-spacing: 0.04em;
-  }
-  .hero-belief::after { content: ' →'; }
-  .hero-scroll {
-    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: var(--text-soft); font-size: 11px; letter-spacing: 0.08em;
-  }
-  .scroll-line {
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--green-mid), transparent);
-    animation: scrollAnim 1.8s ease-in-out infinite;
-  }
-  @keyframes scrollAnim { 0%,100%{opacity:0.3;transform:scaleY(0.6)} 50%{opacity:1;transform:scaleY(1)} }
-
-  /* ============ SECTION BASE ============ */
-  section { padding: 80px 40px; }
-  .section-inner { max-width: 840px; margin: 0 auto; }
-  .section-label {
-    font-size: 11px; letter-spacing: 0.14em;
-    color: var(--green-mid); font-weight: 500;
-    text-transform: uppercase; margin-bottom: 12px;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(22px, 3vw, 30px);
-    font-weight: 700; line-height: 1.5;
-    color: var(--text); margin-bottom: 40px;
-  }
-  .section-title em { color: var(--green); font-style: normal; }
-
-  /* ============ WORRIES ============ */
-  .worries-bg { background: var(--white); }
-  .worries-list {
-    display: flex; flex-direction: column; gap: 2px;
-    margin-bottom: 36px;
-  }
-  .worry-item {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 18px 24px;
-    border-left: 3px solid var(--green-light);
-    background: var(--green-pale);
-    border-radius: 0 10px 10px 0;
-    font-size: 15px; color: var(--text-mid);
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .worry-item:hover { border-color: var(--green-mid); background: var(--green-light); }
-  .worry-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); margin-top: 9px; flex-shrink: 0; }
-  .worries-cta {
-    background: var(--amber-light);
-    border: 1px solid rgba(224,123,57,0.2);
-    border-radius: 14px;
-    padding: 24px 28px;
-    font-size: 15px; color: var(--amber);
-    font-weight: 500; text-align: center;
-  }
-
-  /* ============ PHILOSOPHY ============ */
-  .philosophy-bg { background: var(--green); color: #fff; }
-  .philosophy-bg .section-label { color: rgba(255,255,255,0.6); }
-  .philosophy-bg .section-title { color: #fff; }
-  .philosophy-card {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 16px;
-    padding: 40px 48px;
-    text-align: center;
-  }
-  .philosophy-main {
-    font-family: var(--serif);
-    font-size: 22px; font-weight: 700;
-    color: #fff; margin-bottom: 20px; line-height: 1.6;
-  }
-  .philosophy-sub { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.9; }
-  .philosophy-accent { color: #A8E6CF; font-weight: 500; }
-
-  /* ============ FEATURES ============ */
-  .features-bg { background: var(--white); }
-  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .feature-card {
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-    background: var(--white);
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .feature-card:hover { border-color: var(--green-mid); box-shadow: 0 4px 20px rgba(45,106,79,0.08); }
-  .feature-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: var(--green-light);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; margin-bottom: 18px;
-  }
-  .feature-num {
-    font-size: 11px; letter-spacing: 0.12em;
-    color: var(--green-mid); font-weight: 500;
-    margin-bottom: 8px;
-  }
-  .feature-title { font-family: var(--serif); font-size: 18px; font-weight: 700; margin-bottom: 14px; }
-  .feature-text { font-size: 14px; color: var(--text-mid); line-height: 1.8; }
-  .feature-point {
-    margin-top: 14px; padding-top: 14px;
-    border-top: 1px solid var(--border);
-    font-size: 13px; color: var(--green);
-    font-weight: 500;
-  }
-  .feature-bullets { list-style: none; margin-top: 10px; }
-  .feature-bullets li { font-size: 13px; color: var(--text-mid); padding: 3px 0; padding-left: 14px; position: relative; }
-  .feature-bullets li::before { content: '・'; position: absolute; left: 0; color: var(--green-mid); }
-
-  /* ============ VISION TRAINING ============ */
-  .vision-bg { background: var(--green-pale); }
-  .vision-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 48px;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-    align-items: center;
-    border: 1px solid var(--border);
-  }
-  .vision-label-big {
-    display: inline-block;
-    background: var(--green);
-    color: #fff; font-size: 12px;
-    padding: 4px 14px; border-radius: 12px;
-    margin-bottom: 16px; letter-spacing: 0.06em;
-  }
-  .vision-title { font-family: var(--serif); font-size: 24px; font-weight: 700; margin-bottom: 16px; }
-  .vision-text { font-size: 14px; color: var(--text-mid); line-height: 1.9; margin-bottom: 20px; }
-  .vision-pills { display: flex; flex-wrap: wrap; gap: 10px; }
-  .vision-pill {
-    background: var(--green-light); color: var(--green);
-    font-size: 13px; font-weight: 500;
-    padding: 8px 20px; border-radius: 20px;
-  }
-  .vision-eye {
-    display: flex; align-items: center; justify-content: center;
-  }
-  .eye-graphic {
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: var(--green-light);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
-  .eye-graphic::before {
-    content: '👁';
-    font-size: 64px;
-  }
-
-  /* ============ INFO ============ */
-  .info-bg { background: var(--white); }
-  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .info-card {
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 32px;
-  }
-  .info-card-title {
-    display: flex; align-items: center; gap: 10px;
-    font-family: var(--serif); font-size: 17px; font-weight: 700;
-    margin-bottom: 20px;
-  }
-  .info-icon { font-size: 20px; }
-  .info-row { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
-  .info-row:last-child { border-bottom: none; }
-  .info-key { font-size: 12px; color: var(--text-soft); min-width: 80px; padding-top: 2px; }
-  .info-val { font-size: 14px; color: var(--text); }
-  .info-val strong { color: var(--green); font-weight: 500; }
-  .condition-card {
-    border: 2px solid var(--green-light);
-    border-radius: 16px; padding: 32px;
-    background: var(--green-pale);
-  }
-  .condition-card .info-card-title { color: var(--green); }
-  .condition-bullets { list-style: none; margin-top: 4px; }
-  .condition-bullets li {
-    font-size: 14px; color: var(--text-mid);
-    padding: 8px 0 8px 20px;
-    position: relative;
-    border-bottom: 1px solid rgba(82,183,136,0.15);
-  }
-  .condition-bullets li:last-child { border-bottom: none; }
-  .condition-bullets li::before { content: '✓'; position: absolute; left: 0; color: var(--green-mid); font-weight: 700; }
-
-  /* ============ VOICES ============ */
-  .voices-bg { background: var(--green-pale); }
-  .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .voice-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 16px; padding: 28px;
-    position: relative;
-  }
-  .voice-quote-mark {
-    font-family: var(--serif);
-    font-size: 48px; color: var(--green-light);
-    line-height: 1; margin-bottom: 8px;
-  }
-  .voice-headline {
-    font-family: var(--serif);
-    font-size: 14px; font-weight: 700;
-    color: var(--green); margin-bottom: 14px;
-    line-height: 1.5;
-  }
-  .voice-text { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
-  .voice-tag {
-    display: inline-block;
-    background: var(--green-pale); color: var(--green);
-    font-size: 11px; padding: 3px 10px; border-radius: 10px;
-    margin-top: 14px;
-  }
-
-  /* ============ CHANGES ============ */
-  .changes-bg { background: var(--white); }
-  .change-list { display: flex; flex-direction: column; gap: 16px; }
-  .change-item {
-    display: flex; align-items: flex-start; gap: 20px;
-    padding: 22px 28px;
-    background: var(--green-pale);
-    border-radius: 14px;
-    border-left: 4px solid var(--green-mid);
-  }
-  .change-arrow { font-size: 18px; color: var(--green); margin-top: 2px; flex-shrink: 0; }
-  .change-text { font-size: 15px; color: var(--text-mid); }
-  .change-text strong { color: var(--text); }
-
-  /* ============ TRIAL ============ */
-  .trial-bg { background: var(--amber); }
-  .trial-inner { max-width: 640px; margin: 0 auto; text-align: center; color: #fff; }
-  .trial-inner .section-label { color: rgba(255,255,255,0.7); }
-  .trial-inner .section-title { color: #fff; margin-bottom: 16px; }
-  .trial-price {
-    font-family: var(--serif);
-    font-size: 48px; font-weight: 700;
-    margin: 24px 0 8px;
-  }
-  .trial-price span { font-size: 20px; font-weight: 400; }
-  .trial-note { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
-  .trial-btn {
-    display: inline-block;
-    background: #fff; color: var(--amber);
-    font-size: 16px; font-weight: 700;
-    padding: 18px 48px; border-radius: 40px;
-    cursor: pointer; border: none;
-    letter-spacing: 0.06em;
-    transition: transform 0.15s;
-  }
-  .trial-btn:hover { transform: scale(1.03); }
-
-  /* ============ CLOSING ============ */
-  .closing-bg { background: var(--green); text-align: center; }
-  .closing-inner { max-width: 600px; margin: 0 auto; }
-  .closing-text {
-    font-family: var(--serif);
-    font-size: clamp(18px, 2.5vw, 26px);
-    font-weight: 700; color: #fff;
-    line-height: 1.8; margin-bottom: 28px;
-  }
-  .closing-text em { color: #A8E6CF; font-style: normal; }
-  .closing-sub { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.9; }
-
-  /* ============ FOOTER ============ */
-  footer {
-    background: var(--text);
-    padding: 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 20px;
-  }
-  .footer-logo { font-family: var(--serif); font-size: 14px; font-weight: 700; color: #fff; }
-  .footer-logo span { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.5); display: block; }
-  .footer-info { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.8; }
-  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.35); }
-
-  /* ============ FADE IN ============ */
-  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-in.visible { opacity: 1; transform: none; }
-
-  /* ============ RESPONSIVE ============ */
-  @media (max-width: 768px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    section { padding: 60px 20px; }
-    .features-grid { grid-template-columns: 1fr; }
-    .vision-card { grid-template-columns: 1fr; }
-    .voices-grid { grid-template-columns: 1fr; }
-    .info-grid { grid-template-columns: 1fr; }
-    .hero { padding: 100px 24px 70px; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -432,7 +30,8 @@
 <section class="hero">
   <div class="hero-badge">子どもの発達トレーニング教室</div>
   <div class="hero-subtitle">宮崎能力開発研究所</div>
-  <h1>「一つできれば、<br>十できる。」</h1>
+  <h1>「一つできれば、十できる。」</h1>
+  <div class="hero-tagline">できなかった「1」ができたその日から、きみはもう 10 できる人だ。</div>
   <div class="hero-quote">どんな子にも、可能性があります。</div>
   <p class="hero-desc">
     私たちは、その子の中にある「できた」を見つけ、育てる教室です。<br>
@@ -442,6 +41,11 @@
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     SCROLL
+  </div>
+  <div class="hero-photos">
+    <img src="images/LINE_ALBUM_20260412_260412_1.jpg" alt="教室の様子">
+    <img src="images/LINE_ALBUM_20260412_260412_2.jpg" alt="教室の様子">
+    <img src="images/LINE_ALBUM_20260412_260412_3.jpg" alt="教室の様子">
   </div>
 </section>
 
@@ -527,13 +131,18 @@
 <section class="vision-bg" id="vision">
   <div class="section-inner fade-in">
     <div class="section-label">Vision Training</div>
-    <div class="section-title"><em>ビジョントレーニング</em>（目の学校）</div>
+    <div class="section-title"><em>ビジョントレーニング</em>
+    </div>
     <div class="vision-card">
       <div>
-        <div class="vision-label-big">目の学校メソッド</div>
-        <div class="vision-title">見る力から<br>学びの土台を育てる</div>
+        <div class="vision-label-big">論より証拠。</div>
+        <div class="vision-title">30年の実績からたどり着いた<br>答えがあります。</div>
         <div class="vision-text">
-          当教室は「目の学校」メソッドを取り入れたビジョントレーニングを行っています。学習や日常生活を支える力の土台を、楽しみながら育てます。
+          「良い」と言われる方法が、すべての子に当てはまるわけではありません。<br><br>
+          子ども一人ひとりに、個性があり、ペースがあり、伸び方があります。<br><br>
+          だからこそ——<br>
+          その子には、その子に合ったトレーニングが必要です。<br><br>
+          私たちは、目の前の一人に向き合い、本当に伸びる方法を見極め、育てていきます。
         </div>
         <div class="vision-pills">
           <div class="vision-pill">見る力</div>
@@ -655,6 +264,22 @@
     <div class="trial-price"><span>体験レッスン</span> ¥3,000</div>
     <div class="trial-note">※ご入会の場合、翌月の月謝に充当いたします</div>
     <button class="trial-btn">体験レッスンに申し込む</button>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-bg">
+  <div class="section-inner fade-in">
+    <div class="section-label">Gallery</div>
+    <div class="section-title">教室の<em>様子</em></div>
+    <div class="gallery-grid">
+      <img src="images/LINE_ALBUM_20260412_260412_1.jpg" alt="教室の様子">
+      <img src="images/LINE_ALBUM_20260412_260412_2.jpg" alt="教室の様子">
+      <img src="images/LINE_ALBUM_20260412_260412_3.jpg" alt="教室の様子">
+      <img src="images/LINE_ALBUM_20260412_260412_4.jpg" alt="教室の様子">
+      <img src="images/LINE_ALBUM_20260412_260412_5.jpg" alt="教室の様子">
+      <img src="images/S__28139523.jpg" alt="教室の様子">
+    </div>
   </div>
 </section>
 
